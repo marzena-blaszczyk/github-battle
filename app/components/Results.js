@@ -6,6 +6,8 @@ import { render } from 'react-dom';
 import PropTypes from 'prop-types'
 import Loading from './Loading'
 import Tooltip from './Tooltip'
+import queyryString from 'query-string'
+import { Link } from 'react-router-dom';
 
 function ProfileList ({profile}) {
     return(
@@ -60,7 +62,7 @@ constructor(props){
 }
 
     componentDidMount () {
-        const { playerOne, playerTwo} =this.props
+        const { playerOne, playerTwo} = queyryString.parse (this.props.location.search)
 
         battle([playerOne, playerTwo ])
         .then((players) => {
@@ -111,11 +113,11 @@ constructor(props){
                         <ProfileList profile={loser.profile} />
                     </Card>
                 </div>
-                <button
-                    onClick={this.props.onReset}
+                <Link
+                    to='/battle'
                     className ='btn dark-btn btn-space'>
-                        Reset
-                </button>
+                    Reset
+                </Link>
             </React.Fragment>
         )
     }
