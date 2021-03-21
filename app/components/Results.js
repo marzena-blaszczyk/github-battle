@@ -50,18 +50,13 @@ ProfileList.propTypes ={
 }
 
 export default class Results extends React.Component{
-constructor(props){
-    super(props)
-
-    this.state = {
+    state = {
         winner: null,
         loser: null,
         error: null,
         loading: true
     }
-}
-
-    componentDidMount () {
+    componentDidMount = () => {
         const { playerOne, playerTwo} = queyryString.parse (this.props.location.search)
 
         battle([playerOne, playerTwo ])
@@ -121,10 +116,4 @@ constructor(props){
             </React.Fragment>
         )
     }
-}
-
-Results.propTypes = {
-    playerOne: PropTypes.string.isRequired,
-    playerTwo: PropTypes.string.isRequired,
-    onReset: PropTypes.func.isRequired
 }
