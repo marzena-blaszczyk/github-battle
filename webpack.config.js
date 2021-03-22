@@ -20,9 +20,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'app/index.html'
         }),
-        new CopyPlagin([
-            { from : '_redirects'}
-        ])
+        new CopyPlagin({patterns:[{from : '_redirects'}]}
+        )
 
     ],
     devServer: {
